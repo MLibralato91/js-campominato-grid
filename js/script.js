@@ -48,10 +48,15 @@ function drawSquare(index, numSquares) {
 
 function generateBombs(bombsnum, numsquares) {
     const bombs = [];
-    for (let i = 1; i <= bombsnum; i++) {
+
+    console.log(bombs);
+    while (bombs.length < bombsnum) {
         const bomb = getRndNumber(1, numsquares);
-        bombs.push(bomb);
+        if (bombs.indexOf(bomb) === -1)
+         // if che verifica che all'interno dell'array sia presente l'indice
+            bombs.push(bomb);
     }
+
     return bombs;
 }
 
@@ -63,7 +68,7 @@ function play(e) {
     const NUM_BOMBS = 16;
     //prendo il livello
     const level = document.getElementById('level').value;
-    console.log(level);
+    //console.log(level);
 
     //Imposto il numero di celle a seconda del livello
     let squareNumbers;
@@ -80,7 +85,7 @@ function play(e) {
             break;
 
     };
-    console.log(squareNumbers);
+    //console.log(squareNumbers);
 
     //Determino il numero di celle per lato
     let squareForRow = Math.sqrt(squareNumbers);
@@ -88,7 +93,7 @@ function play(e) {
     //Generare numeri casuali
 
     const bombs = generateBombs(NUM_BOMBS, squareNumbers);
-    console.log(bombs);
+    //console.log(bombs);
     //Ciclo per il numero di celle e genero la cella
     for (let i = 1; i <= squareNumbers; i++) {
         const square = drawSquare(i, squareForRow)
