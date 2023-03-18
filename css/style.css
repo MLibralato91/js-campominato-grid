@@ -26,3 +26,8 @@ main{
     justify-content: center;
     align-items: center;
 }
+.squareSafe{
+    background-color: rgb(12, 12, 104) ;
+    color: white;
+}
+
