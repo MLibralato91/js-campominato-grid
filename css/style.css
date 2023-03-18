@@ -31,3 +31,7 @@ main{
     color: white;
 }
 
+.squareUnsafe{
+    background-color: brown;
+    color: white;
+}

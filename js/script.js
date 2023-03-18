@@ -11,7 +11,7 @@ L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
 Ogni cella ha un numero progressivo, da 1 a 100.
 Ci saranno quindi 10 caselle per ognuna delle 10 righe.
 Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
- 
+
 
 
  `<div class="square">1</div>`
@@ -49,17 +49,17 @@ function drawSquare(index, numSquares) {
 function generateBombs(bombsnum, numsquares) {
     const bombs = [];
 
-    console.log(bombs);
+    
     while (bombs.length < bombsnum) {
         const bomb = getRndNumber(1, numsquares);
         if (bombs.indexOf(bomb) === -1)
-         // if che verifica che all'interno dell'array sia presente l'indice
+            // if che verifica che all'interno dell'array sia presente l'indice
             bombs.push(bomb);
     }
 
     return bombs;
 }
-
+;
 function play(e) {
     e.preventDefault();
 
@@ -93,14 +93,20 @@ function play(e) {
     //Generare numeri casuali
 
     const bombs = generateBombs(NUM_BOMBS, squareNumbers);
-    //console.log(bombs);
+    
     //Ciclo per il numero di celle e genero la cella
     for (let i = 1; i <= squareNumbers; i++) {
         const square = drawSquare(i, squareForRow)
+      
+        //console.log(bombs.indexOf(i));
         //aggiunto evento click per colorale le square clickate
         square.addEventListener('click', function () {
+            if(i === bombs[i]){
+                square.classList.add('squareUnsafe')
+            }else
+            
             square.classList.add('squareSafe')
-        });
+        });console.log(bombs[i])
         playground.appendChild(square);
     }
 
